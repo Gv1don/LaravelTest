@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function(){
+    return view('home');
+})->name('home');
+
+Route::get('/login', function(){
+    if (Auth::check()){
+        return redirect(route('data'));
+    }
+    return view('login');
+})->name('login');
+
+//Route::get('/data', 'data')->middleware('auth')->name('data');
