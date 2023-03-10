@@ -28,4 +28,6 @@ Route::get('/login', function(){
     return view('login');
 })->name('login');
 
-//Route::get('/data', 'data')->middleware('auth')->name('data');
+Route::get('/data', function(){
+    return view('data');
+})->middleware('auth')->name('data');

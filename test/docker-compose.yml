@@ -23,6 +23,15 @@ services:
             - sail
         depends_on:
             - pgsql
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: test@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: 12345
+        ports:
+            - "8888:80"
+        links:
+            - pgsql:laraavelDatabase
     pgsql:
         image: 'postgres:15'
         ports:
@@ -32,6 +41,7 @@ services:
             POSTGRES_DB: '${DB_DATABASE}'
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+        domainname: laraavelDatabase
         volumes:
             - 'sail-pgsql:/var/lib/postgresql/data'
             - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'

@@ -4,29 +4,17 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">    </head>
         <meta name="viewport" content="width=device=width, initital=scale=1">
-        <!--- CSRF Token --->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Taskman</title>
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <h1>Login</h1>
         <form>
-            @csrf
             <div>
                 <label for="email">Ваш email</label>
                 <input id="email" name="email" type="text" value="" placeholder="Email">
-                @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
             </div>
             <div>
                 <label for="password">Ваш пароль</label>
                 <input id="password" name="password" type="password" value="" placeholder="Пароль">
-                @error('password')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
             </div>
             <div>
                 <button type="submit" name="sendMe" value="1">Войти</button>
