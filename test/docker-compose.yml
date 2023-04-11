@@ -32,6 +32,8 @@ services:
             - "8888:80"
         links:
             - pgsql:laraavelDatabase
+        networks:
+            - sail
     pgsql:
         image: 'postgres:15'
         ports:
