@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,9 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/data', function(){
     return view('data');
 })->middleware('auth')->name('data');
+
+Route::get('/registration', function(){
+    return view('registration');
+});
+
+Route::post('/registration', [RegistrationController::class, 'registration']);

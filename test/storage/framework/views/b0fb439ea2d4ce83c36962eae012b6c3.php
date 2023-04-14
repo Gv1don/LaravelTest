@@ -47,6 +47,6 @@ unset($__errorArgs, $__bag); ?>
                 </div>    
 
             </div>    
-        </form action>
+        </form>
     </body>
 </html><?php /**PATH /var/www/html/resources/views/login.blade.php ENDPATH**/ ?>

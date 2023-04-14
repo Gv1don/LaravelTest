@@ -27,11 +27,9 @@ services:
         image: dpage/pgadmin4
         environment:
             PGADMIN_DEFAULT_EMAIL: test@gmail.com
-            PGADMIN_DEFAULT_PASSWORD: 12345
+            PGADMIN_DEFAULT_PASSWORD: 123
         ports:
             - "8888:80"
-        links:
-            - pgsql:laraavelDatabase
         networks:
             - sail
     pgsql:

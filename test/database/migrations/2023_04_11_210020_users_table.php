@@ -8,23 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     */
+    */
     public function up(): void
     {
-        Shema::create('users', function(Blueprint $stable){
-            $table->increment('id');
-            $table->string('email', 255)->nullable(false)->unique('email');
-            $table->string('password', 255)->nullable(false);
-            $table->string('remember_token', 100)->nullable(true);
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
+
+            return redirect('/login');
         });
     }
 
     /**
      * Reverse the migrations.
-     */
+    */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('users');
     }
 };
