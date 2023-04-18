@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class LoginController
@@ -14,12 +15,12 @@ class LoginController
 
         $user = User::where('email', $email)->first();
 
-        if ($user && Hash::check($password, $user->password)){
+        if ($user && $password == $user->password) {
             Auth::login($user);
-            return view('data');
+            return redirect()->route('data');
         }
         else{
-            return view('home');
+            return redirect()->route('login');
         }
     }
 }
