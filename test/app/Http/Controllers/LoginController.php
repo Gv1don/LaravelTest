@@ -10,6 +10,11 @@ use App\Models\User;
 class LoginController
 {
     public function login(Request $request){
+
+        if (Auth::check()){
+            return redirect(route('data'));
+        }
+
         $email = $request->input('email');
         $password = $request->input('password');
 

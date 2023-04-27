@@ -24,9 +24,11 @@
                 </div>
                 <div>
                     <button type="submit" name="sendMe" value="1">Войти</button>
-                </div>    
-
+                </div>
             </div>    
+        </form>
+        <form action="/registration" method="GET">
+            <button type="submit" value="1"> Зарегистрироваться </button>
         </form>
     </body>
 </html><?php /**PATH /var/www/html/resources/views/login.blade.php ENDPATH**/ ?>

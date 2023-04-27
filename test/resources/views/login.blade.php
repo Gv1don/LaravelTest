@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">    </head>
         <meta name="viewport" content="width=device=width, initital=scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>test-task</title>
+        <title>Login</title>
     </head>
     <body>
         <h1>Login</h1>
@@ -23,9 +23,11 @@
                 </div>
                 <div>
                     <button type="submit" name="sendMe" value="1">Войти</button>
-                </div>    
-
+                </div>
             </div>    
+        </form>
+        <form action="/registration" method="GET">
+            <button type="submit" value="1"> Зарегистрироваться </button>
         </form>
     </body>
 </html>
