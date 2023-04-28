@@ -10,7 +10,7 @@ class Referrer
 {   
     public function handle(Request $request, Closure $next)
     {
-        $referer = $request->headers->get('referer'); // previous page URL
+        $referer = $request->headers->has('referer') ? $request->headers->get('referer') : '/home'; // previous page URL
         $expected_url = ['/home', '/login', '/data']; // expected page array
 
         if(in_array($referer, $expected_url)) {

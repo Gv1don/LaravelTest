@@ -29,3 +29,7 @@ Route::post('/logout', function(){
 })->name('logout');
 
 Route::get('/data', [UserController::class, 'index'])->middleware('auth')->name('data');
+
+Route::post('/sortIP', [UserController::class, 'sortIP'])->middleware('auth')->name('sortIP');
+
+Route::post('/sortVisit', [UserController::class, 'sortVisit'])->middleware('auth')->name('sortVisit');

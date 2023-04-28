@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <title>Admin</title>
     </head>
     <body>
         <h1>Data page</h1>
@@ -9,11 +9,21 @@
             <?php echo csrf_field(); ?>
             <button type="submit" value="1"> Выйти </button>
         </form>
+        <form action="<?php echo e(route('sortIP')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <input type="hidden" name="sort_order" value="<?php echo e($sort_order); ?>">
+            <button type="submit" value="1"> Сортировать по IP </button>
+        </form>
+        <form action="<?php echo e(route('sortVisit')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <input type="hidden" name="sort_order" value="<?php echo e($sort_order); ?>">
+            <button type="submit" value="1"> Сортировать по времени </button>
+        </form>
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>ip</th>
+                    <th>Visit time</th>
                 </tr>
             </thead>
             <tbody>

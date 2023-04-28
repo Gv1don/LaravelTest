@@ -9,10 +9,20 @@
             @csrf
             <button type="submit" value="1"> Выйти </button>
         </form>
+        <form action="{{ route('sortIP') }}" method="POST">
+            @csrf
+            <input type="hidden" name="sort_order" value="{{ $sort_order }}">
+            <button type="submit" value="1"> Сортировать по IP </button>
+        </form>
+        <form action="{{ route('sortVisit') }}" method="POST">
+            @csrf
+            <input type="hidden" name="sort_order" value="{{ $sort_order }}">
+            <button type="submit" value="1"> Сортировать по времени </button>
+        </form>
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>ip</th>
                     <th>Visit time</th>
                 </tr>
             </thead>

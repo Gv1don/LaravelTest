@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">    </head>
         <meta name="viewport" content="width=device=width, initital=scale=1">
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-        <title>test-task</title>
+        <title>Login</title>
     </head>
     <body>
         <h1>Login</h1>

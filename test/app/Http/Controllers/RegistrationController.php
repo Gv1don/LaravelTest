@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class RegistrationController
@@ -10,20 +11,23 @@ class RegistrationController
     public function registration(Request $request){   
 
         $email = $request->input('email');
-        $user = User::where('email', $email);
+        $user = User::where('email', $email)->first();
 
         if($user){
-            return redirect()->route('login');
+            return redirect()->route('home');
         };
 
-        $user = new User();
-
-        $user->email = $email;
-        $user->password = $request->input('password');
-        $password = $request->input('passsword');
+        $password = $request->input('password');
         $confirm = $request->input('confirm-password');
-        $user->save();
 
-        return redirect()->route('login');
+        if($password == $confirm){
+            $user = new User();
+            $user->email = $email;
+            $user->password = $password;
+            $user->save();
+            return redirect()->route('login');
+        }
+
+        return redirect()->route('registration');
     }
 }
