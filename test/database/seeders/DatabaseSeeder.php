@@ -1,15 +1,13 @@
 <?php
 
-namespace Database\Seeders;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-
-class UsersSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run()
     {
         DB::table('users')->insert([
@@ -18,15 +16,5 @@ class UsersSeeder extends Seeder
             ['email' => 'test@yandex.ru', 'password' => Hash::make('test')],
             ['email' => 'sail@gmail.com', 'password' => Hash::make('sail')],
         ]);
-    }
-
-    public function setCommand($command)
-    {
-        $this->command = $command;
-    } 
-
-    public function setContainer($container)
-    {
-        $this->container = $container;
     }
 }
