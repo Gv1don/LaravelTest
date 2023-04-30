@@ -20,7 +20,7 @@ class LoginController
 
         $user = User::where('email', $email)->first();
 
-        if ($user && $password == $user->password) {
+        if ($user && Hash::check($password, $user->password)){
             Auth::login($user);
             return redirect()->route('data');
         }

@@ -7,10 +7,6 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\VisitController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/home', [VisitController::class, 'index'])->name('home');
 
 Route::get('/login', [VisitController::class, 'saveVisit'])->name('login')->middleware('check.referrer');
@@ -30,6 +26,4 @@ Route::post('/logout', function(){
 
 Route::get('/data', [UserController::class, 'index'])->middleware('auth')->name('data');
 
-Route::post('/sortIP', [UserController::class, 'sortIP'])->middleware('auth')->name('sortIP');
-
-Route::post('/sortVisit', [UserController::class, 'sortVisit'])->middleware('auth')->name('sortVisit');
+Route::post('/data/filter', [UserController::class, 'filtration'])->middleware('auth')->name('filter');

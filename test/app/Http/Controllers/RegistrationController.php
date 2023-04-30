@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class RegistrationController
@@ -14,7 +15,7 @@ class RegistrationController
         $user = User::where('email', $email)->first();
 
         if($user){
-            return redirect()->route('home');
+            return redirect()->route('registration');
         };
 
         $password = $request->input('password');
@@ -23,11 +24,11 @@ class RegistrationController
         if($password == $confirm){
             $user = new User();
             $user->email = $email;
-            $user->password = $password;
+            $user->password = Hash::make($password);
             $user->save();
             return redirect()->route('login');
         }
 
-        return redirect()->route('registration');
+        return redirect()->route('home');
     }
 }

@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="<?php echo e(app()->getLocale()); ?>">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">    </head>
-        <meta name="viewport" content="width=device=width, initital=scale=1">
-        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
         <title>Login</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     </head>
     <body>
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <?php echo e(csrf_field()); ?>
-
-            <div class="form-group">
-                    
-                <div>
-                    <label for="email">Ваш email</label>
-                    <input id="email" name="email" type="text" value="" placeholder="Email">
+        <main class="Login">
+            <form class="loginForm" action="/login" method="POST">
+                <?php echo csrf_field(); ?>
+                <h1 class="h3 mb-3 fw-normal" style="display: flex; justify-content: center;">Please sign in</h1>
+                <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
                 </div>
-                <div>
-                    <label for="password">Ваш пароль</label>
-                    <input id="password" name="password" type="password" value="" placeholder="Пароль">
+                <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                <label for="floatingPassword">Password</label>
                 </div>
-                <div>
-                    <button type="submit" name="sendMe" value="1">Войти</button>
-                </div>
-            </div>    
-        </form>
-        <form action="/registration" method="GET">
-            <button type="submit" value="1"> Зарегистрироваться </button>
-        </form>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 20px">Sign in</button>
+            </form>
+            <form action="<?php echo e(route('registration')); ?>" method="GET">
+                <?php echo csrf_field(); ?>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" value="1" style="margin-top: 10px;">Registration</button>
+            </form>
+        </main>
     </body>
 </html><?php /**PATH /var/www/html/resources/views/login.blade.php ENDPATH**/ ?>

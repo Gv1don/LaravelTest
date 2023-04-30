@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Visit;
 use Carbon\Carbon;
 
 class VisitController
 {
-    
+
     public function index(Request $request) {
 
         $ip = $request->ip();
@@ -18,21 +19,20 @@ class VisitController
         $visit = Visit::where('ip', $ip)->latest('start_time')->first();
 
         if ($visit){ // if this entry exists
-            if (is_null($visit->stop_time)){ //if stop_time is null -> user on page
+            if ($visit->stop_time == $visit->start_time){ //if stop_time == start_time -> user on page
                 $start = $visit->start_time; //update start_time = last start_time
+                return view('welcome');
             }
         }
-        else{
-            $newVisit = new Visit;
-            $newVisit->ip = $ip;
-            $newVisit->start_time = $start;
-            $newVisit->stop_time = $start;
-            $newVisit->visit_time = '';
 
-            $newVisit->save();
-        }
-        
-        return view('home');
+        $newVisit = new Visit;
+        $newVisit->ip = $ip;
+        $newVisit->start_time = $start;
+        $newVisit->stop_time = $start;
+        $newVisit->visit_time = '';
+        $newVisit->save();
+
+        return view('welcome');
     }
 
     public function saveVisit(Request $request){
@@ -55,7 +55,7 @@ class VisitController
                 }
             }
         }
-        
+
         if(Auth::check()){
             return redirect()->route('data');
         }
