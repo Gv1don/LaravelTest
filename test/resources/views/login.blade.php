@@ -24,10 +24,6 @@
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 20px">Sign in</button>
             </form>
-            <form action="{{ route('registration') }}" method="GET">
-                @csrf
-                <button class="w-100 btn btn-lg btn-primary" type="submit" value="1" style="margin-top: 10px;">Registration</button>
-            </form>
         </main>
     </body>
 </html>

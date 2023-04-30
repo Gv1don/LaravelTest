@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body{
+    height: 100%;
+}
+
 /* Login page begin */
 
 .Login{
